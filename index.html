@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Celestial Journey: Ashara Mubaraka 1447 H</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .font-lora {
+            font-family: 'Lora', serif;
+        }
+
+        /* Parallax background effect */
+        .parallax-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #bg1 { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'); opacity: 1; }
+        #bg2 { background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop'); opacity: 0; }
+        #bg3 { background-image: url('https://images.unsplash.com/photo-1502134249126-9f3755a50d78?q=80&w=2070&auto=format&fit=crop'); opacity: 0; }
+
+        /* Styling for content sections */
+        .content-section {
+            padding: 8rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animation for elements fading in on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card styling for interactive elements */
+        .info-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Planet visualization styles */
+        .orbits-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; /* Maintain aspect ratio */
+            max-width: 600px;
+            margin: 4rem auto;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform-origin: center center;
+            animation: orbit-rotation 30s linear infinite;
+        }
+        
+        #earth {
+            width: 40px; height: 40px; background-color: #6fa8dc;
+            box-shadow: 0 0 15px #6fa8dc;
+            margin: -20px 0 0 -20px;
+        }
+
+        #moon-orbit { width: 15%; height: 15%; }
+        #moon { width: 8px; height: 8px; background-color: #d1d1d1; margin-top: -4px; animation-duration: 5s; }
+        
+        #mercury-orbit { width: 25%; height: 25%; }
+        #mercury { width: 10px; height: 10px; background-color: #e5e5e5; margin-left: -5px; animation-duration: 8s; }
+
+        #venus-orbit { width: 35%; height: 35%; }
+        #venus { width: 14px; height: 14px; background-color: #f4a460; margin-top: -7px; animation-duration: 12s; }
+
+        #sun-orbit { width: 48%; height: 48%; }
+        #sun { width: 25px; height: 25px; background-color: #ffd700; box-shadow: 0 0 20px #ffd700; margin-left: -12.5px; animation-duration: 15s;}
+
+        #mars-orbit { width: 60%; height: 60%; }
+        #mars { width: 12px; height: 12px; background-color: #c1440e; margin-top: -6px; animation-duration: 20s; }
+
+        #jupiter-orbit { width: 75%; height: 75%; }
+        #jupiter { width: 22px; height: 22px; background-color: #d8ca9d; margin-left: -11px; animation-duration: 25s; }
+
+        #saturn-orbit { width: 90%; height: 90%; }
+        #saturn { width: 18px; height: 18px; background-color: #c3b091; margin-top: -9px; animation-duration: 30s; }
+
+
+        @keyframes orbit-rotation {
+            from { transform: rotate(0deg) translateX(50%) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(50%) rotate(-360deg); }
+        }
+        
+        .planet-label {
+            position: absolute;
+            color: white;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            text-shadow: 0 0 5px black;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Parallax Backgrounds -->
+    <div id="bg1" class="parallax-bg"></div>
+    <div id="bg2" class="parallax-bg"></div>
+    <div id="bg3" class="parallax-bg"></div>
+
+    <!-- Hero Section -->
+    <header class="parallax-container">
+        <div class="z-10 p-4">
+            <h1 class="text-4xl md:text-6xl font-lora font-bold text-white mb-4 tracking-wider" style="text-shadow: 0 2px 10px rgba(0,0,0,0.7);">A Journey Through the Cosmos</h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                From al-Falak al-Muheet, the Surrounding Orbit, to the earth upon which Maulana al-Imam al-Husain AS placed his blessed brow.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section 1: The Divine Plan -->
+        <section class="content-section text-center">
+            <div class="fade-in">
+                <h2 class="text-3xl font-lora font-semibold mb-4 text-amber-300">The Perfection of Creation</h2>
+                <p class="text-lg leading-relaxed">
+                    The universe and everything within it was created by Allah Taʿala through prior knowledge—not by trial and error. Every entity was placed precisely where it belongs. In the same manner, the tenets and principles of faith have been established: deliberately, perfectly, and without flaw.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: The Nine Celestial Orbits -->
+        <section class="content-section text-center">
+            <div class="fade-in">
+                <h2 class="text-3xl font-lora font-semibold mb-4 text-sky-300">The Nine Aflaak</h2>
+                <p class="text-lg leading-relaxed mb-8">
+                    The nine celestial orbits, from the all-encompassing al-Falak al-Muheet to the Moon, represent a divine hierarchy. Just as physical planets affect the temporal realm, the spiritual aflaak influence souls, guiding them toward salvation.
+                </p>
+                <div class="orbits-container">
+                    <!-- The Earth at the center -->
+                    <div id="earth"></div>
+                    <span class="planet-label" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">Earth</span>
+
+                    <!-- Orbits and Planets -->
+                    <div id="moon-orbit" class="orbit"><div id="moon" class="planet"><span class="planet-label" style="bottom: 10px;">Moon</span></div></div>
+                    <div id="mercury-orbit" class="orbit"><div id="mercury" class="planet"><span class="planet-label" style="bottom: 12px;">Mercury</span></div></div>
+                    <div id="venus-orbit" class="orbit"><div id="venus" class="planet"><span class="planet-label" style="bottom: 16px;">Venus</span></div></div>
+                    <div id="sun-orbit" class="orbit"><div id="sun" class="planet"><span class="planet-label" style="bottom: 20px;">Sun</span></div></div>
+                    <div id="mars-orbit" class="orbit"><div id="mars" class="planet"><span class="planet-label" style="bottom: 14px;">Mars</span></div></div>
+                    <div id="jupiter-orbit" class="orbit"><div id="jupiter" class="planet"><span class="planet-label" style="bottom: 18px;">Jupiter</span></div></div>
+                    <div id="saturn-orbit" class="orbit"><div id="saturn" class="planet"><span class="planet-label" style="bottom: 16px;">Saturn</span></div></div>
+                    
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-center">
+                         <p class="text-sm text-gray-400">Falak al-Buruj (Fixed Stars)</p>
+                         <p class="text-lg font-bold text-white">Al-Falak al-Muheet (Surrounding Orbit)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Historical Significance -->
+        <section class="content-section">
+            <div class="fade-in text-center">
+                 <h2 class="text-3xl font-lora font-semibold mb-8 text-fuchsia-300">Celestial Alignments in History</h2>
+            </div>
+            <div class="space-y-8">
+                <!-- 500 Years -->
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-bold mb-2">500 Years Ago</h3>
+                    <p>The seat of Dawat transferred from Yemen to Hind. Syedna Yusuf Najmuddin RA, whose name contains ‘Najm’ (star), established 24 shops in Sidhpur, mirroring the 24 hours of al-Falak al-Muheet’s rotation.</p>
+                </div>
+                <!-- 100 Years Ago -->
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-bold mb-2">100 Years Ago (1347 H)</h3>
+                    <p>Syedna Taher Saifuddin RA took the mithaq of Syedna Mohammed Burhanuddin RA in Surat, bestowing upon him the title Burhanuddin.</p>
+                </div>
+                <!-- 50 Years Ago -->
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-bold mb-2">50 Years Ago (1397 H)</h3>
+                    <p>Syedna Mohammed Burhanuddin RA presided over ʿAshara Mubaraka in Madras, his twelfth as Dai Mutlaq.</p>
+                </div>
+                 <!-- Present -->
+                <div class="info-card rounded-lg p-6 fade-in bg-amber-500/10 border-amber-400/30">
+                    <h3 class="text-xl font-bold mb-2">This Year (1447 H)</h3>
+                    <p>This serendipitously marks Syedna Mufaddal Saifuddin's TUS twelfth ʿAshara Mubaraka as Dai Mutlaq. "Twelve plus twelve," he said, "is twenty-four."</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Al-Falak al-Muheet Characteristics -->
+        <section class="content-section">
+            <div class="fade-in text-center">
+                <h2 class="text-3xl font-lora font-semibold mb-4 text-teal-300">Al-Falak al-Muheet</h2>
+                <p class="text-lg leading-relaxed mb-8">The outermost celestial sphere, representing the throne (ʿarsh) of Allah, manifests five key characteristics, each reflected in Wali Allah AS.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Characteristic Cards -->
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="font-bold text-lg mb-2">1. Rapid Revolution</h3>
+                    <p>It revolves on its own with great speed, the origin of all motion. Wali Allah is always the first to take action, guiding Mumineen by initiating it himself.</p>
+                </div>
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="font-bold text-lg mb-2">2. Perfectly Spherical</h3>
+                    <p>Its round shape symbolizes humility in bowing before the Almighty and the compassion of a loving parent bending towards their child.</p>
+                </div>
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="font-bold text-lg mb-2">3. Self-Sustaining Motion</h3>
+                    <p>Its rotation requires no external force. Similarly, Awliya Allah AS connect Mumineen to the center through muhabbat, ensuring they do not go astray.</p>
+                </div>
+                <div class="info-card rounded-lg p-6 fade-in">
+                    <h3 class="font-bold text-lg mb-2">4. Transparency (Shaffaafiyya)</h3>
+                    <p>It is subtle and immaterial. Nearness to Maula is not physical but spiritual, measured by the muhabbat and orientation of the soul.</p>
+                </div>
+                <div class="info-card rounded-lg p-6 fade-in md:col-span-2">
+                    <h3 class="font-bold text-lg mb-2">5. Immense Vastness</h3>
+                    <p>Its vastness is beyond comprehension. In the same way, the embrace of Wali Allah AS is immeasurable, encompassing all Mumineen, no matter their condition.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Descent to Earth -->
+        <section class="content-section text-center">
+             <div class="fade-in">
+                <h2 class="text-3xl font-lora font-semibold mb-4 text-red-300">The Land of Karbala</h2>
+                <p class="text-lg leading-relaxed">
+                    Ultimately, on ʿAshura, the focus is the Earth, upon which these celestial spheres exert their influence, and upon which Imam Husain AS, the divine star, descended to raise countless individuals to the heavens.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Section 6: Shahadat -->
+        <section class="content-section">
+            <div class="fade-in info-card rounded-lg p-8 bg-black/20">
+                <p class="text-lg leading-relaxed mb-6">
+                    Imam Husain’s AS horse came to a halt. He mounted seven horses, yet none would move. He sighed deeply and asked for the name of the place. An elder replied that the exact spot was called ‘Karbala’! Hearing this, Imam AS exclaimed, “Karb (distress) and balaa (hardship)!”
+                </p>
+                <p class="text-lg leading-relaxed font-lora italic text-gray-300">
+                    He instructed Imam Ali Zain al-Abidin AS to convey his salaam to the faithful and to tell them that it behoved them to remember him whenever they partook of food or water.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-8 text-gray-500">
+        <p>May Allah Taʿala bless our beloved Maula with a long life in health and happiness until the Day of Qiyamat.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Intersection Observer for fade-in animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // --- Parallax Background Scroll Effect ---
+            const bg1 = document.getElementById('bg1');
+            const bg2 = document.getElementById('bg2');
+            const bg3 = document.getElementById('bg3');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+                
+                // Simple background transition based on scroll position
+                const journeyProgress = scrollPosition / (document.body.scrollHeight - windowHeight);
+
+                if (journeyProgress < 0.33) {
+                    bg1.style.opacity = 1;
+                    bg2.style.opacity = 0;
+                    bg3.style.opacity = 0;
+                } else if (journeyProgress < 0.66) {
+                    bg1.style.opacity = 0;
+                    bg2.style.opacity = 1;
+                    bg3.style.opacity = 0;
+                } else {
+                    bg1.style.opacity = 0;
+                    bg2.style.opacity = 0;
+                    bg3.style.opacity = 1; // Transition to the final "earthy" background
+                }
+            });
+        });
+    </script>
+</body>
+</html>
